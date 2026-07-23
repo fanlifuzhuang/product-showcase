@@ -16,7 +16,6 @@
             background: #faf8f5;
         }
 
-        /* ===== 公司名 ===== */
         header {
             text-align: center;
             padding: 40px 20px 20px;
@@ -31,7 +30,6 @@
             color: #1a1a1a;
         }
 
-        /* ===== 分类导航 ===== */
         .brand-nav {
             background: #fff;
             padding: 16px 20px;
@@ -67,7 +65,6 @@
             border-bottom-color: #8a6e5a;
         }
 
-        /* ===== 照片网格（纯图片，无文字） ===== */
         .photo-grid {
             max-width: 1400px;
             margin: 30px auto 50px;
@@ -91,7 +88,6 @@
             transform: scale(1.02);
         }
 
-        /* ===== 空状态 ===== */
         .empty {
             grid-column: 1 / -1;
             text-align: center;
@@ -101,7 +97,6 @@
             letter-spacing: 2px;
         }
 
-        /* ===== 底部WhatsApp ===== */
         footer {
             text-align: center;
             padding: 30px 20px 40px;
@@ -126,7 +121,6 @@
             background: #1ebe5c;
         }
 
-        /* ===== 响应式 ===== */
         @media (max-width: 600px) {
             header h1 {
                 font-size: 2rem;
@@ -151,12 +145,10 @@
 </head>
 <body>
 
-<!-- ===== 公司名 ===== -->
 <header>
     <h1>Ashley Miller</h1>
 </header>
 
-<!-- ===== 分类导航 ===== -->
 <nav class="brand-nav" id="brandNav">
     <button class="active" data-brand="all">全部</button>
     <button data-brand="balenciaga">Balenciaga</button>
@@ -168,69 +160,41 @@
     <button data-brand="miumiu">Miu Miu</button>
 </nav>
 
-<!-- ===== 照片展示区 ===== -->
 <div class="photo-grid" id="photoGrid"></div>
 
-<!-- ===== 底部WhatsApp ===== -->
 <footer>
     <a href="https://wa.me/8613692961375" target="_blank">📩 WhatsApp +86 136 9296 1375</a>
 </footer>
 
 <script>
     // ================================================================
-    //  照片数据 —— 把图片路径换成你自己的
-    //  每个品牌放多少张图都可以，自动适配
+    //  ⚠️ 只需要改下面每个品牌括号里的数字 = 你文件夹里的照片数量
+    //  比如 balenciaga 文件夹有 300 张照片，就写 300
+    //  暂时没有照片就写 0
     // ================================================================
+
+    function generatePhotos(brand, count) {
+        const list = [];
+        for (let i = 1; i <= count; i++) {
+            list.push(`images/${brand}/1 (${i}).jpg`);
+        }
+        return list;
+    }
+
     const photos = {
-        balenciaga: [
-            'images/balenciaga/01.jpg',
-            'images/balenciaga/02.jpg',
-            'images/balenciaga/03.jpg',
-            'images/balenciaga/04.jpg',
-            'images/balenciaga/05.jpg',
-        ],
-        chanel: [
-            'images/chanel/01.jpg',
-            'images/chanel/02.jpg',
-            'images/chanel/03.jpg',
-            'images/chanel/04.jpg',
-        ],
-        dior: [
-            'images/dior/01.jpg',
-            'images/dior/02.jpg',
-            'images/dior/03.jpg',
-        ],
-        gucci: [
-            'images/gucci/01.jpg',
-            'images/gucci/02.jpg',
-            'images/gucci/03.jpg',
-            'images/gucci/04.jpg',
-            'images/gucci/05.jpg',
-            'images/gucci/06.jpg',
-        ],
-        hermes: [
-            'images/hermes/01.jpg',
-            'images/hermes/02.jpg',
-            'images/hermes/03.jpg',
-        ],
-        lv: [
-            'images/lv/01.jpg',
-            'images/lv/02.jpg',
-            'images/lv/03.jpg',
-            'images/lv/04.jpg',
-        ],
-        miumiu: [
-            'images/miumiu/01.jpg',
-            'images/miumiu/02.jpg',
-            'images/miumiu/03.jpg',
-            'images/miumiu/04.jpg',
-            'images/miumiu/05.jpg',
-        ],
+        balenciaga: generatePhotos('balenciaga', 300),   // ← 改成你的数量
+        chanel: generatePhotos('chanel', 300),            // ← 改成你的数量
+        dior: generatePhotos('dior', 300),                // ← 改成你的数量
+        gucci: generatePhotos('gucci', 300),              // ← 改成你的数量
+        hermes: generatePhotos('hermes', 300),            // ← 改成你的数量
+        lv: generatePhotos('lv', 300),                    // ← 改成你的数量
+        miumiu: generatePhotos('miumiu', 300),            // ← 改成你的数量
     };
 
     // ================================================================
-    //  渲染逻辑（不用改）
+    //  下面不用改
     // ================================================================
+
     const grid = document.getElementById('photoGrid');
     const nav = document.getElementById('brandNav');
 
@@ -250,7 +214,6 @@
             img.src = src;
             img.alt = '';
             img.loading = 'lazy';
-            // 图片加载失败时显示占位
             img.onerror = function() {
                 this.style.background = '#f0ebe5';
                 this.style.minHeight = '200px';
@@ -259,7 +222,6 @@
         });
     }
 
-    // 切换分类
     function setBrand(brand) {
         render(brand);
         document.querySelectorAll('.brand-nav button').forEach(btn => {
@@ -267,13 +229,11 @@
         });
     }
 
-    // 点击事件
     nav.addEventListener('click', (e) => {
         const btn = e.target.closest('button');
         if (btn) setBrand(btn.dataset.brand);
     });
 
-    // 默认显示全部
     render('all');
 </script>
 
