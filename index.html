@@ -172,6 +172,7 @@
             border-radius: 6px;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            cursor: pointer;
         }
 
         .photo-grid img:hover {
@@ -187,6 +188,114 @@
             font-size: 1rem;
             letter-spacing: 2px;
             font-family: 'Arial', sans-serif;
+        }
+
+        /* ===== Lightbox (点击放大) ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 85%;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-family: 'Arial', sans-serif;
+            line-height: 1;
+        }
+
+        .lightbox .close:hover {
+            color: #b09a88;
+        }
+
+        .lightbox .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: none;
+            padding: 16px 22px;
+            font-size: 2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s;
+            font-family: 'Arial', sans-serif;
+            line-height: 1;
+        }
+
+        .lightbox .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .lightbox .prev {
+            left: 20px;
+        }
+
+        .lightbox .next {
+            right: 20px;
+        }
+
+        .lightbox .counter {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .lightbox {
+                padding: 10px;
+            }
+            .lightbox .close {
+                top: 10px;
+                right: 18px;
+                font-size: 2rem;
+            }
+            .lightbox .nav-btn {
+                padding: 10px 14px;
+                font-size: 1.2rem;
+            }
+            .lightbox .prev {
+                left: 6px;
+            }
+            .lightbox .next {
+                right: 6px;
+            }
+            .lightbox img {
+                max-width: 95%;
+                max-height: 75%;
+            }
         }
 
         /* ===== Order Guide ===== */
@@ -381,6 +490,15 @@
 <!-- ===== Photo Grid ===== -->
 <div class="photo-grid" id="photoGrid"></div>
 
+<!-- ===== Lightbox ===== -->
+<div class="lightbox" id="lightbox">
+    <span class="close" id="closeLightbox">✕</span>
+    <button class="nav-btn prev" id="prevBtn">‹</button>
+    <button class="nav-btn next" id="nextBtn">›</button>
+    <img id="lightboxImg" src="" alt="Enlarged view" />
+    <div class="counter" id="counter"></div>
+</div>
+
 <!-- ===== Order Guide ===== -->
 <div class="order-guide">
     <h2>🧡 Ashley Miller — Order Guide</h2>
@@ -451,7 +569,7 @@
 
     const photos = {
         lv: generatePhotos('lv', '1', 1, 132),
-        dior: generatePhotos('dior', '1', 1, 0 ),
+        dior: generatePhotos('dior', '1', 1, 300),
         balenciaga: [],
         chanel: [],
         gucci: [],
@@ -466,6 +584,9 @@
     const grid = document.getElementById('photoGrid');
     const nav = document.getElementById('brandNav');
 
+    let currentImages = [];
+    let currentIndex = 0;
+
     function render(brand) {
         grid.innerHTML = '';
         const list = brand === 'all'
@@ -477,18 +598,85 @@
             return;
         }
 
-        list.forEach(src => {
+        currentImages = list;
+
+        list.forEach((src, index) => {
             const img = document.createElement('img');
             img.src = src;
             img.alt = '';
             img.loading = 'lazy';
+            img.dataset.index = index;
             img.onerror = function() {
                 this.style.background = '#ece6e0';
                 this.style.minHeight = '200px';
             };
+            img.addEventListener('click', function() {
+                openLightbox(parseInt(this.dataset.index));
+            });
             grid.appendChild(img);
         });
     }
+
+    // ================================================================
+    //  Lightbox Logic
+    // ================================================================
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeLightbox');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('counter');
+
+    function openLightbox(index) {
+        currentIndex = index;
+        updateLightbox();
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function updateLightbox() {
+        if (currentImages.length > 0) {
+            lightboxImg.src = currentImages[currentIndex];
+            counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        }
+    }
+
+    function prevImage() {
+        if (currentImages.length === 0) return;
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        updateLightbox();
+    }
+
+    function nextImage() {
+        if (currentImages.length === 0) return;
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        updateLightbox();
+    }
+
+    closeBtn.addEventListener('click', closeLightbox);
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
+
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+    });
+
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    // ================================================================
+    //  Navigation
+    // ================================================================
 
     function setBrand(brand) {
         render(brand);
