@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ashley Miller - 奢侈品精品店</title>
+    <title>Ashley Miller - Luxury Collection</title>
     <style>
         * {
             margin: 0;
@@ -17,7 +17,7 @@
             color: #1a1a1a;
         }
 
-        /* ===== 顶部通栏：联系方式 ===== */
+        /* ===== Top Bar ===== */
         .top-bar {
             background: #1a1a1a;
             color: #d4c5b2;
@@ -82,7 +82,7 @@
             color: #ffffff;
         }
 
-        /* ===== 头部：品牌名 ===== */
+        /* ===== Header ===== */
         header {
             text-align: center;
             padding: 50px 20px 30px;
@@ -113,7 +113,7 @@
             font-family: 'Arial', sans-serif;
         }
 
-        /* ===== 分类导航 ===== */
+        /* ===== Navigation ===== */
         .brand-nav {
             background: #ffffff;
             padding: 18px 20px 14px;
@@ -153,10 +153,10 @@
             font-weight: 600;
         }
 
-        /* ===== 照片网格 ===== */
+        /* ===== Photo Grid ===== */
         .photo-grid {
             max-width: 1440px;
-            margin: 35px auto 50px;
+            margin: 35px auto 20px;
             padding: 0 20px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
@@ -189,10 +189,74 @@
             font-family: 'Arial', sans-serif;
         }
 
-        /* ===== 底部 ===== */
+        /* ===== Order Guide ===== */
+        .order-guide {
+            max-width: 820px;
+            margin: 10px auto 0;
+            padding: 30px 28px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.03);
+            font-family: 'Arial', sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: #2a2a2a;
+        }
+
+        .order-guide h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+            font-family: 'Georgia', serif;
+        }
+
+        .order-guide .sub {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 14px;
+            border-bottom: 1px solid #f0ebe5;
+            padding-bottom: 12px;
+        }
+
+        .order-guide .section {
+            margin-top: 10px;
+        }
+
+        .order-guide .section strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .order-guide .section ul {
+            list-style: none;
+            padding: 0;
+            margin: 2px 0 0 0;
+        }
+
+        .order-guide .section ul li {
+            padding-left: 6px;
+            position: relative;
+        }
+
+        .order-guide .divider {
+            border: none;
+            border-top: 1px solid #f0ebe5;
+            margin: 14px 0 10px;
+        }
+
+        .order-guide .footer-note {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* ===== Footer ===== */
         footer {
             text-align: center;
-            padding: 28px 20px 35px;
+            padding: 20px 20px 35px;
             border-top: 1px solid #ece6e0;
             background: #ffffff;
             color: #aaa;
@@ -201,7 +265,7 @@
             letter-spacing: 1px;
         }
 
-        /* ===== 响应式 ===== */
+        /* ===== Responsive ===== */
         @media (max-width: 768px) {
             .top-bar {
                 flex-direction: column;
@@ -230,7 +294,15 @@
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
                 gap: 14px;
                 padding: 0 14px;
-                margin: 20px auto 30px;
+                margin: 20px auto 10px;
+            }
+            .order-guide {
+                padding: 20px 16px;
+                font-size: 0.82rem;
+                margin: 0 14px;
+            }
+            .order-guide h2 {
+                font-size: 1.1rem;
             }
         }
 
@@ -252,26 +324,30 @@
                 gap: 10px;
                 padding: 0 10px;
             }
+            .order-guide {
+                padding: 16px 14px;
+                font-size: 0.78rem;
+                margin: 0 10px;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- ===== 顶部通栏：联系方式 ===== -->
+<!-- ===== Top Bar ===== -->
 <div class="top-bar">
     <div class="contact-info">
-        <span>📧 ashley.miller@luxury.com</span>
         <span>📞 +86 136 9296 1375</span>
         <a href="https://wa.me/8613692961375" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
     </div>
     <div class="social-links">
         <a href="#" target="_blank">Instagram</a>
         <a href="#" target="_blank">WeChat</a>
-        <a href="#" target="_blank">小红书</a>
+        <a href="#" target="_blank">Xiaohongshu</a>
     </div>
 </div>
 
-<!-- ===== 品牌名 ===== -->
+<!-- ===== Header ===== -->
 <header>
     <h1>Ashley Miller</h1>
     <div class="sub-title">✦ CURATED FASHION COLLECTION ✦</div>
@@ -282,9 +358,9 @@
     </div>
 </header>
 
-<!-- ===== 分类导航 ===== -->
+<!-- ===== Navigation ===== -->
 <nav class="brand-nav" id="brandNav">
-    <button class="active" data-brand="all">全部</button>
+    <button class="active" data-brand="all">ALL</button>
     <button data-brand="balenciaga">Balenciaga</button>
     <button data-brand="chanel">Chanel</button>
     <button data-brand="dior">Dior</button>
@@ -294,17 +370,67 @@
     <button data-brand="miumiu">Miu Miu</button>
 </nav>
 
-<!-- ===== 照片展示 ===== -->
+<!-- ===== Photo Grid ===== -->
 <div class="photo-grid" id="photoGrid"></div>
 
-<!-- ===== 底部 ===== -->
+<!-- ===== Order Guide ===== -->
+<div class="order-guide">
+    <h2>🧡 Ashley Miller — Order Guide</h2>
+    <div class="sub">Thank you for choosing Ashley Miller. Please read before ordering.</div>
+
+    <div class="section">
+        <strong>📩 How to Order</strong>
+        <p>Send us a photo or screenshot of the item you like via FB / WhatsApp, and we‘ll confirm availability.</p>
+    </div>
+
+    <div class="section">
+        <strong>💰 Pricing</strong>
+        <p>All prices are quoted in USD. Quotes are valid for 24 hours — please confirm on the day of purchase.</p>
+    </div>
+
+    <div class="section">
+        <strong>✅ Order Confirmation</strong>
+        <p>Full payment is required to confirm your order. We accept PayPal, Visa, Mastercard, American Express, Discover, JCB, and account balance payments.</p>
+    </div>
+
+    <div class="section">
+        <strong>📦 Shipping</strong>
+        <ul>
+            <li>• In-stock items: shipped within 48 hours</li>
+            <li>• Pre-order items: 3–15 days (depending on style)</li>
+            <li>• Tracking number provided after shipment</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <strong>🔒 After-Sales</strong>
+        <ul>
+            <li>• Video / photo quality check before shipment</li>
+            <li>• Inspect upon delivery. Contact us within 24 hours if any major issue</li>
+            <li>• No returns due to personal preference (color, size, etc.)</li>
+        </ul>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section">
+        <strong>💬 Contact Us</strong>
+        <p>📞 Phone / WhatsApp：+86 136 9296 1375</p>
+    </div>
+
+    <div class="footer-note">
+        ✨ Curated with care, delivered with love. Thank you for your trust.
+    </div>
+</div>
+
+<!-- ===== Footer ===== -->
 <footer>
-    &copy; 2026 Ashley Miller — 用心甄选每一件单品
+    &copy; 2026 Ashley Miller
 </footer>
 
 <script>
     // ================================================================
-    //  照片数据
+    //  Photo Data
     // ================================================================
 
     function generatePhotos(brand, prefix, start, count) {
@@ -315,21 +441,18 @@
         return list;
     }
 
-    // ⬇️ 每个品牌填：文件夹名, 照片前缀, 起始数字, 数量
     const photos = {
-        // LV：照片名字是 1 (1).jpg 到 1 (92).jpg
         lv: generatePhotos('lv', '1', 1, 92),
-        // 其他品牌上传后，照上面格式添加
+        dior: generatePhotos('dior', '1', 1, 300),
         balenciaga: [],
         chanel: [],
-        dior: [],
         gucci: [],
         hermes: [],
         miumiu: [],
     };
 
     // ================================================================
-    //  下面不用改
+    //  Render Logic
     // ================================================================
 
     const grid = document.getElementById('photoGrid');
@@ -342,7 +465,7 @@
             : photos[brand] || [];
 
         if (list.length === 0) {
-            grid.innerHTML = `<div class="empty">✨ 该品牌暂无照片</div>`;
+            grid.innerHTML = `<div class="empty">✨ No photos available for this brand</div>`;
             return;
         }
 
