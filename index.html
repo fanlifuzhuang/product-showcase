@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>您的公司 - 产品展示</title>
+    <title>Ashley Miller - Luxury Bags</title>
     <style>
-        body { font-family: "Microsoft YaHei", sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
         header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; text-align: center; padding: 80px 20px; }
         h1 { margin: 0; font-size: 3rem; }
         .subtitle { font-size: 1.4rem; margin-top: 10px; opacity: 0.95; }
@@ -55,25 +55,50 @@
 </head>
 <body>
     <header>
-        <h1>您的公司名称</h1>
-        <p class="subtitle">高质量产品 · 专业服务</p>
+        <!-- Ashley Miller -->
+        <h1>Your Brand Name</h1>
+        <p class="subtitle">Premium Luxury Bags Collection</p>
     </header>
 
     <div class="categories">
-        <button class="cat-btn active" data-category="all">全部产品</button>
-        <button class="cat-btn" data-category="phone">手机</button>
-        <button class="cat-btn" data-category="earphone">耳机</button>
-        <button class="cat-btn" data-category="charger">充电配件</button>
+        <button class="cat-btn active" data-category="all">All Products</button>
+        <button class="cat-btn" data-category="phone">LV bags</button>
+        <button class="cat-btn" data-category="earphone">Gucci bags</button>
+        <button class="cat-btn" data-category="charger">Chanel bags</button>
+        <button class="cat-btn" data-category="watch">Balenciaga bags</button>
     </div>
 
     <div class="products" id="productList"></div>
 
     <script>
+        // ==================== 在这里添加或修改你的产品 ====================
         const products = [
-            { name: "示例手机1", category: "phone", img: "https://via.placeholder.com/600x400/3b82f6/white?text=手机1" },
-            { name: "示例手机2", category: "phone", img: "https://via.placeholder.com/600x400/2563eb/white?text=手机2" },
-            { name: "无线耳机Pro", category: "earphone", img: "https://via.placeholder.com/600x400/22c55e/white?text=耳机" },
-            { name: "65W快充头", category: "charger", img: "https://via.placeholder.com/600x400/f59e0b/white?text=充电器" },
+            { 
+                name: "LV Neverfull MM", 
+                category: "phone", 
+                img: "https://via.placeholder.com/600x400/3b82f6/white?text=LV+Bag" 
+            },
+            { 
+                name: "LV Speedy Bag", 
+                category: "phone", 
+                img: "https://via.placeholder.com/600x400/2563eb/white?text=LV+Speedy" 
+            },
+            { 
+                name: "Gucci Marmont Bag", 
+                category: "earphone", 
+                img: "https://via.placeholder.com/600x400/22c55e/white?text=Gucci" 
+            },
+            { 
+                name: "Chanel Classic Flap", 
+                category: "charger", 
+                img: "https://via.placeholder.com/600x400/f59e0b/white?text=Chanel" 
+            },
+            { 
+                name: "Balenciaga City Bag", 
+                category: "watch", 
+                img: "https://via.placeholder.com/600x400/8b5cf6/white?text=Balenciaga" 
+            }
+            // 继续复制上面的格式添加更多产品
         ];
 
         function renderProducts(cat = "all") {
