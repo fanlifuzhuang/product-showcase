@@ -1,129 +1,281 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ashley Miller</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
-        header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; text-align: center; padding: 80px 20px; }
-        h1 { margin: 0; font-size: 3rem; }
-        .subtitle { font-size: 1.4rem; margin-top: 10px; opacity: 0.95; }
-        
-        .categories { 
-            text-align: center; padding: 30px; background: white; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .cat-btn {
-            margin: 8px;
-            padding: 14px 32px;
-            font-size: 1.1rem;
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .cat-btn:hover { background: #1d4ed8; transform: scale(1.05); }
-        .cat-btn.active { background: #1e40af; }
 
-        .products {
-            padding: 40px 20px;
-            max-width: 1300px;
-            margin: 0 auto;
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #faf8f5;
+        }
+
+        /* ===== 公司名 ===== */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            background: #fff;
+            border-bottom: 1px solid #e8e0d8;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            color: #1a1a1a;
+        }
+
+        /* ===== 分类导航 ===== */
+        .brand-nav {
+            background: #fff;
+            padding: 16px 20px;
+            border-bottom: 1px solid #ece6e0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .brand-nav button {
+            background: none;
+            border: none;
+            padding: 8px 4px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #777;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.25s ease;
+            letter-spacing: 1px;
+        }
+
+        .brand-nav button:hover {
+            color: #000;
+        }
+
+        .brand-nav button.active {
+            color: #000;
+            border-bottom-color: #8a6e5a;
+        }
+
+        /* ===== 照片网格（纯图片，无文字） ===== */
+        .photo-grid {
+            max-width: 1400px;
+            margin: 30px auto 50px;
+            padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
         }
-        .product-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        .product-card:hover { transform: translateY(-10px); }
-        .product-card img {
+
+        .photo-grid img {
             width: 100%;
-            height: 240px;
+            aspect-ratio: 1 / 1;
             object-fit: cover;
+            display: block;
+            background: #f0ebe5;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
         }
-        .info { padding: 18px; text-align: center; }
-        .info h3 { margin: 10px 0 5px 0; color: #1f2937; }
+
+        .photo-grid img:hover {
+            transform: scale(1.02);
+        }
+
+        /* ===== 空状态 ===== */
+        .empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 20px;
+            color: #ccc;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        /* ===== 底部WhatsApp ===== */
+        footer {
+            text-align: center;
+            padding: 30px 20px 40px;
+            border-top: 1px solid #ece6e0;
+            background: #fff;
+        }
+
+        footer a {
+            display: inline-block;
+            background: #25d366;
+            color: #fff;
+            padding: 12px 36px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: background 0.3s;
+        }
+
+        footer a:hover {
+            background: #1ebe5c;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+                letter-spacing: 3px;
+            }
+            .brand-nav {
+                gap: 6px 14px;
+                padding: 12px 10px;
+            }
+            .brand-nav button {
+                font-size: 0.8rem;
+                padding: 6px 2px;
+            }
+            .photo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 12px;
+                padding: 0 12px;
+                margin: 20px auto 30px;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <!-- 【Ashley Miller】你的公司名称 -->
-        <h1>Ashley Miller</h1>
-        <!-- 【✨ Curated Fashion Collection
-👜 Bags • ⌚ Watches • 👟 Shoes • 👕 Clothing
-Style • Quality • New Arrivals
-Browse our full range of items in my photo album to pick your favourite styles!
-Follow & message us 📩WhatsApp+86 13692961375】副标题 -->
-        <p class="subtitle">Premium Luxury Bags Collection</p>
-    </header>
 
-    <div class="categories">
-        <button class="cat-btn active" data-category="all">All Products</button>
-        <button class="cat-btn" data-category="lv">LV bags</button>
-        <button class="cat-btn" data-category="gucci">Gucci bags</button>
-        <button class="cat-btn" data-category="chanel">Chanel bags</button>
-        <button class="cat-btn" data-category="balenciaga">Balenciaga bags</button>
-    </div>
+<!-- ===== 公司名 ===== -->
+<header>
+    <h1>Ashley Miller</h1>
+</header>
 
-    <div class="products" id="productList"></div>
+<!-- ===== 分类导航 ===== -->
+<nav class="brand-nav" id="brandNav">
+    <button class="active" data-brand="all">全部</button>
+    <button data-brand="balenciaga">Balenciaga</button>
+    <button data-brand="chanel">Chanel</button>
+    <button data-brand="dior">Dior</button>
+    <button data-brand="gucci">Gucci</button>
+    <button data-brand="hermes">Hermès</button>
+    <button data-brand="lv">LV</button>
+    <button data-brand="miumiu">Miu Miu</button>
+</nav>
 
-    <script>
-        // ==================== 【在这里添加你的产品】 ====================
-        // 复制下面一段，改 name 和 img 即可
-        const products = [
-            { 
-                name: "在这里写产品名称1", 
-                category: "lv", 
-                img: "./images/lv/图片文件名1.jpg" 
-            },
-            { 
-                name: "在这里写产品名称2", 
-                category: "lv", 
-                img: "./images/lv/图片文件名2.jpg" 
-            },
-            { 
-                name: "在这里写产品名称3", 
-                category: "gucci", 
-                img: "./images/gucci/图片文件名.jpg" 
-            }
-            // 继续复制上面的格式添加更多产品
-        ];
+<!-- ===== 照片展示区 ===== -->
+<div class="photo-grid" id="photoGrid"></div>
 
-        function renderProducts(cat = "all") {
-            const container = document.getElementById("productList");
-            container.innerHTML = "";
-            const filtered = cat === "all" ? products : products.filter(p => p.category === cat);
-            
-            filtered.forEach(p => {
-                const card = document.createElement("div");
-                card.className = "product-card";
-                card.innerHTML = `
-                    <img src="${p.img}" alt="${p.name}">
-                    <div class="info">
-                        <h3>${p.name}</h3>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
+<!-- ===== 底部WhatsApp ===== -->
+<footer>
+    <a href="https://wa.me/8613692961375" target="_blank">📩 WhatsApp +86 136 9296 1375</a>
+</footer>
+
+<script>
+    // ================================================================
+    //  照片数据 —— 把图片路径换成你自己的
+    //  每个品牌放多少张图都可以，自动适配
+    // ================================================================
+    const photos = {
+        balenciaga: [
+            'images/balenciaga/01.jpg',
+            'images/balenciaga/02.jpg',
+            'images/balenciaga/03.jpg',
+            'images/balenciaga/04.jpg',
+            'images/balenciaga/05.jpg',
+        ],
+        chanel: [
+            'images/chanel/01.jpg',
+            'images/chanel/02.jpg',
+            'images/chanel/03.jpg',
+            'images/chanel/04.jpg',
+        ],
+        dior: [
+            'images/dior/01.jpg',
+            'images/dior/02.jpg',
+            'images/dior/03.jpg',
+        ],
+        gucci: [
+            'images/gucci/01.jpg',
+            'images/gucci/02.jpg',
+            'images/gucci/03.jpg',
+            'images/gucci/04.jpg',
+            'images/gucci/05.jpg',
+            'images/gucci/06.jpg',
+        ],
+        hermes: [
+            'images/hermes/01.jpg',
+            'images/hermes/02.jpg',
+            'images/hermes/03.jpg',
+        ],
+        lv: [
+            'images/lv/01.jpg',
+            'images/lv/02.jpg',
+            'images/lv/03.jpg',
+            'images/lv/04.jpg',
+        ],
+        miumiu: [
+            'images/miumiu/01.jpg',
+            'images/miumiu/02.jpg',
+            'images/miumiu/03.jpg',
+            'images/miumiu/04.jpg',
+            'images/miumiu/05.jpg',
+        ],
+    };
+
+    // ================================================================
+    //  渲染逻辑（不用改）
+    // ================================================================
+    const grid = document.getElementById('photoGrid');
+    const nav = document.getElementById('brandNav');
+
+    function render(brand) {
+        grid.innerHTML = '';
+        const list = brand === 'all'
+            ? Object.values(photos).flat()
+            : photos[brand] || [];
+
+        if (list.length === 0) {
+            grid.innerHTML = `<div class="empty">该品牌暂无照片</div>`;
+            return;
         }
 
-        document.querySelectorAll(".cat-btn").forEach(btn => {
-            btn.addEventListener("click", () => {
-                document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
-                btn.classList.add("active");
-                renderProducts(btn.dataset.category);
-            });
+        list.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = '';
+            img.loading = 'lazy';
+            // 图片加载失败时显示占位
+            img.onerror = function() {
+                this.style.background = '#f0ebe5';
+                this.style.minHeight = '200px';
+            };
+            grid.appendChild(img);
         });
+    }
 
-        renderProducts();
-    </script>
+    // 切换分类
+    function setBrand(brand) {
+        render(brand);
+        document.querySelectorAll('.brand-nav button').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.brand === brand);
+        });
+    }
+
+    // 点击事件
+    nav.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (btn) setBrand(btn.dataset.brand);
+    });
+
+    // 默认显示全部
+    render('all');
+</script>
+
 </body>
 </html>
