@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashley Miller - Luxury Bags</title>
+    <title>Ashley Miller</title>
     <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
         header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; text-align: center; padding: 80px 20px; }
@@ -55,48 +55,44 @@
 </head>
 <body>
     <header>
-        <!-- Ashley Miller -->
-        <h1>Your Brand Name</h1>
+        <!-- 【Ashley Miller】你的公司名称 -->
+        <h1>Ashley Miller</h1>
+        <!-- 【✨ Curated Fashion Collection
+👜 Bags • ⌚ Watches • 👟 Shoes • 👕 Clothing
+Style • Quality • New Arrivals
+Browse our full range of items in my photo album to pick your favourite styles!
+Follow & message us 📩WhatsApp+86 13692961375】副标题 -->
         <p class="subtitle">Premium Luxury Bags Collection</p>
     </header>
 
     <div class="categories">
         <button class="cat-btn active" data-category="all">All Products</button>
-        <button class="cat-btn" data-category="phone">LV bags</button>
-        <button class="cat-btn" data-category="earphone">Gucci bags</button>
-        <button class="cat-btn" data-category="charger">Chanel bags</button>
-        <button class="cat-btn" data-category="watch">Balenciaga bags</button>
+        <button class="cat-btn" data-category="lv">LV bags</button>
+        <button class="cat-btn" data-category="gucci">Gucci bags</button>
+        <button class="cat-btn" data-category="chanel">Chanel bags</button>
+        <button class="cat-btn" data-category="balenciaga">Balenciaga bags</button>
     </div>
 
     <div class="products" id="productList"></div>
 
     <script>
-        // ==================== 在这里添加或修改你的产品 ====================
+        // ==================== 【在这里添加你的产品】 ====================
+        // 复制下面一段，改 name 和 img 即可
         const products = [
             { 
-                name: "LV Neverfull MM", 
-                category: "phone", 
-                img: "https://via.placeholder.com/600x400/3b82f6/white?text=LV+Bag" 
+                name: "在这里写产品名称1", 
+                category: "lv", 
+                img: "./images/lv/图片文件名1.jpg" 
             },
             { 
-                name: "LV Speedy Bag", 
-                category: "phone", 
-                img: "https://via.placeholder.com/600x400/2563eb/white?text=LV+Speedy" 
+                name: "在这里写产品名称2", 
+                category: "lv", 
+                img: "./images/lv/图片文件名2.jpg" 
             },
             { 
-                name: "Gucci Marmont Bag", 
-                category: "earphone", 
-                img: "https://via.placeholder.com/600x400/22c55e/white?text=Gucci" 
-            },
-            { 
-                name: "Chanel Classic Flap", 
-                category: "charger", 
-                img: "https://via.placeholder.com/600x400/f59e0b/white?text=Chanel" 
-            },
-            { 
-                name: "Balenciaga City Bag", 
-                category: "watch", 
-                img: "https://via.placeholder.com/600x400/8b5cf6/white?text=Balenciaga" 
+                name: "在这里写产品名称3", 
+                category: "gucci", 
+                img: "./images/gucci/图片文件名.jpg" 
             }
             // 继续复制上面的格式添加更多产品
         ];
