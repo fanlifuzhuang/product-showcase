@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ashley Miller</title>
+    <title>Ashley Miller - 奢侈品精品店</title>
     <style>
         * {
             margin: 0;
@@ -12,48 +12,135 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: #faf8f5;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #f7f4f0;
+            color: #1a1a1a;
         }
 
+        /* ===== 顶部通栏：联系方式 ===== */
+        .top-bar {
+            background: #1a1a1a;
+            color: #d4c5b2;
+            padding: 10px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            font-family: 'Arial', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .top-bar .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px 30px;
+            align-items: center;
+        }
+
+        .top-bar .contact-info a {
+            color: #d4c5b2;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .top-bar .contact-info a:hover {
+            color: #ffffff;
+        }
+
+        .top-bar .whatsapp-btn {
+            background: #25d366;
+            color: #fff !important;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+
+        .top-bar .whatsapp-btn:hover {
+            background: #1ebe5c;
+            color: #fff !important;
+        }
+
+        .top-bar .social-links {
+            display: flex;
+            gap: 14px;
+        }
+
+        .top-bar .social-links a {
+            color: #d4c5b2;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .top-bar .social-links a:hover {
+            color: #ffffff;
+        }
+
+        /* ===== 头部：品牌名 ===== */
         header {
             text-align: center;
-            padding: 40px 20px 20px;
-            background: #fff;
+            padding: 50px 20px 30px;
+            background: #ffffff;
             border-bottom: 1px solid #e8e0d8;
         }
 
         header h1 {
-            font-size: 2.8rem;
+            font-size: 3.6rem;
             font-weight: 300;
-            letter-spacing: 6px;
+            letter-spacing: 8px;
             color: #1a1a1a;
         }
 
+        header .sub-title {
+            font-size: 1rem;
+            color: #b09a88;
+            letter-spacing: 6px;
+            margin-top: 6px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header .tagline {
+            font-size: 0.95rem;
+            color: #8a7a6a;
+            margin-top: 12px;
+            letter-spacing: 2px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* ===== 分类导航 ===== */
         .brand-nav {
-            background: #fff;
-            padding: 16px 20px;
+            background: #ffffff;
+            padding: 18px 20px 14px;
             border-bottom: 1px solid #ece6e0;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px 24px;
+            gap: 8px 22px;
             position: sticky;
             top: 0;
             z-index: 10;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
         }
 
         .brand-nav button {
             background: none;
             border: none;
             padding: 8px 4px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            font-family: 'Arial', sans-serif;
             font-weight: 500;
             color: #777;
             cursor: pointer;
-            border-bottom: 3px solid transparent;
+            border-bottom: 2px solid transparent;
             transition: all 0.25s ease;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
         }
 
         .brand-nav button:hover {
@@ -62,16 +149,18 @@
 
         .brand-nav button.active {
             color: #000;
-            border-bottom-color: #8a6e5a;
+            border-bottom-color: #b8a08e;
+            font-weight: 600;
         }
 
+        /* ===== 照片网格 ===== */
         .photo-grid {
-            max-width: 1400px;
-            margin: 30px auto 50px;
+            max-width: 1440px;
+            margin: 35px auto 50px;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 22px;
         }
 
         .photo-grid img {
@@ -79,13 +168,15 @@
             aspect-ratio: 1 / 1;
             object-fit: cover;
             display: block;
-            background: #f0ebe5;
-            border-radius: 4px;
-            transition: transform 0.3s ease;
+            background: #ece6e0;
+            border-radius: 6px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
         }
 
         .photo-grid img:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
         }
 
         .empty {
@@ -95,60 +186,103 @@
             color: #ccc;
             font-size: 1rem;
             letter-spacing: 2px;
+            font-family: 'Arial', sans-serif;
         }
 
+        /* ===== 底部 ===== */
         footer {
             text-align: center;
-            padding: 30px 20px 40px;
+            padding: 28px 20px 35px;
             border-top: 1px solid #ece6e0;
-            background: #fff;
+            background: #ffffff;
+            color: #aaa;
+            font-size: 0.8rem;
+            font-family: 'Arial', sans-serif;
+            letter-spacing: 1px;
         }
 
-        footer a {
-            display: inline-block;
-            background: #25d366;
-            color: #fff;
-            padding: 12px 36px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-            transition: background 0.3s;
-        }
-
-        footer a:hover {
-            background: #1ebe5c;
-        }
-
-        @media (max-width: 600px) {
+        /* ===== 响应式 ===== */
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                gap: 8px;
+                padding: 10px 16px;
+                text-align: center;
+            }
+            .top-bar .contact-info {
+                justify-content: center;
+                gap: 10px 16px;
+            }
             header h1 {
-                font-size: 2rem;
-                letter-spacing: 3px;
+                font-size: 2.4rem;
+                letter-spacing: 4px;
             }
             .brand-nav {
-                gap: 6px 14px;
+                gap: 4px 14px;
                 padding: 12px 10px;
             }
             .brand-nav button {
-                font-size: 0.8rem;
+                font-size: 0.7rem;
                 padding: 6px 2px;
+                letter-spacing: 0.8px;
             }
             .photo-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 12px;
-                padding: 0 12px;
+                gap: 14px;
+                padding: 0 14px;
                 margin: 20px auto 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-bar .contact-info {
+                font-size: 0.75rem;
+                gap: 6px 12px;
+            }
+            .top-bar .whatsapp-btn {
+                padding: 4px 14px;
+                font-size: 0.75rem;
+            }
+            header h1 {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+            .photo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 10px;
+                padding: 0 10px;
             }
         }
     </style>
 </head>
 <body>
 
+<!-- ===== 顶部通栏：联系方式 ===== -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span>📧 ashley.miller@luxury.com</span>
+        <span>📞 +86 136 9296 1375</span>
+        <a href="https://wa.me/8613692961375" target="_blank" class="whatsapp-btn">💬 WhatsApp</a>
+    </div>
+    <div class="social-links">
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">WeChat</a>
+        <a href="#" target="_blank">小红书</a>
+    </div>
+</div>
+
+<!-- ===== 品牌名 ===== -->
 <header>
     <h1>Ashley Miller</h1>
+    <div class="sub-title">✦ CURATED FASHION COLLECTION ✦</div>
+    <div class="tagline">
+        👜 Bags &nbsp;·&nbsp; ⌚ Watches &nbsp;·&nbsp; 👟 Shoes &nbsp;·&nbsp; 👕 Clothing
+        <br />
+        Style · Quality · New Arrivals
+    </div>
 </header>
 
+<!-- ===== 分类导航 ===== -->
 <nav class="brand-nav" id="brandNav">
     <button class="active" data-brand="all">全部</button>
     <button data-brand="balenciaga">Balenciaga</button>
@@ -160,35 +294,39 @@
     <button data-brand="miumiu">Miu Miu</button>
 </nav>
 
+<!-- ===== 照片展示 ===== -->
 <div class="photo-grid" id="photoGrid"></div>
 
+<!-- ===== 底部 ===== -->
 <footer>
-    <a href="https://wa.me/8613692961375" target="_blank">📩 WhatsApp +86 136 9296 1375</a>
+    &copy; 2026 Ashley Miller — 用心甄选每一件单品
 </footer>
 
 <script>
     // ================================================================
-    //  ⚠️ 只需要改下面每个品牌括号里的数字 = 你文件夹里的照片数量
-    //  比如 balenciaga 文件夹有 300 张照片，就写 300
-    //  暂时没有照片就写 0
+    //  照片数据
     // ================================================================
 
-    function generatePhotos(brand, count) {
+    function generatePhotos(brand, prefix, start, count) {
         const list = [];
-        for (let i = 1; i <= count; i++) {
-            list.push(`images/${brand}/1 (${i}).jpg`);
+        for (let i = start; i < start + count; i++) {
+            list.push(`/product-showcase/images/${brand}/${prefix} (${i}).jpg`);
         }
         return list;
     }
 
+    // ⬇️ 每个品牌填：文件夹名, 照片前缀, 起始数字, 数量
     const photos = {
-        balenciaga: generatePhotos('balenciaga', 300),   // ← 改成你的数量
-        chanel: generatePhotos('chanel', 300),            // ← 改成你的数量
-        dior: generatePhotos('dior', 300),                // ← 改成你的数量
-        gucci: generatePhotos('gucci', 300),              // ← 改成你的数量
-        hermes: generatePhotos('hermes', 300),            // ← 改成你的数量
-        lv: generatePhotos('lv', 92),                    // ← 改成你的数量
-        miumiu: generatePhotos('miumiu', 300),            // ← 改成你的数量
+        // LV：照片名字是 8 (10).jpg 开始
+        // 把下面的 41 改成你实际照片数量
+        lv: generatePhotos('lv', '8', 10, 41),
+        // 其他品牌上传后，照上面格式添加
+        balenciaga: [],
+        chanel: [],
+        dior: [],
+        gucci: [],
+        hermes: [],
+        miumiu: [],
     };
 
     // ================================================================
@@ -205,7 +343,7 @@
             : photos[brand] || [];
 
         if (list.length === 0) {
-            grid.innerHTML = `<div class="empty">该品牌暂无照片</div>`;
+            grid.innerHTML = `<div class="empty">✨ 该品牌暂无照片</div>`;
             return;
         }
 
@@ -215,7 +353,7 @@
             img.alt = '';
             img.loading = 'lazy';
             img.onerror = function() {
-                this.style.background = '#f0ebe5';
+                this.style.background = '#ece6e0';
                 this.style.minHeight = '200px';
             };
             grid.appendChild(img);
